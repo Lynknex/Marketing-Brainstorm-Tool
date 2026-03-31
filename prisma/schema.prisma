@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  campaigns     Campaign[]
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Campaign {
+  id          String   @id @default(cuid())
+  name        String
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Campaign configuration
+  objectives  Json     // {leadGen: true, brandAwareness: true, thoughtLeadership: true}
+  audience    Json     // {decisionMakers: true, technical: true, endUsers: true}
+  frequency   String   // "conservative" | "moderate" | "aggressive"
+  contentMix  String   // "image-heavy" | "video-first" | "balanced" | "thought-leadership"
+
+  // Campaign details
+  startDate   DateTime
+  endDate     DateTime
+  postCount   Int
+  holidays    Json     // Array of selected holidays
+  products    Json     // Array of product focus areas
+  kpis        Json     // Array of selected KPIs
+
+  // Generated content
+  posts       Post[]
+  designSpec  String?  @db.Text  // Markdown content
+  planDoc     String?  @db.Text  // Markdown content
+
+  // Status
+  status      CampaignStatus @default(DRAFT)
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  campaignId  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Post details
+  title       String
+  scheduledDate DateTime
+  postType    PostType
+  contentDimension String  // "technology" | "solution" | "value" etc
+
+  // Content
+  copy        String   @db.Text
+  visualConcept String @db.Text
+  hashtags    Json     // Array of hashtags
+  cta         String
+
+  // Metadata
+  productFocus String?
+  holidayTieIn String?
+
+  // Performance tracking (optional)
+  impressions Int?
+  engagementRate Float?
+  clicks      Int?
+
+  campaign    Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+}
+
+enum CampaignStatus {
+  DRAFT
+  IN_BRAINSTORM
+  DESIGN_COMPLETE
+  IN_PRODUCTION
+  SCHEDULED
+  ACTIVE
+  COMPLETED
+  ARCHIVED
+}
+
+enum PostType {
+  TEXT
+  IMAGE
+  VIDEO
+  CAROUSEL
+}
