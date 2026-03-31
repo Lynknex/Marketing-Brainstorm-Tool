@@ -1,0 +1,187 @@
+[
+  {
+    "id": "objectives",
+    "order": 1,
+    "question": "What are your primary campaign objectives?",
+    "subtitle": "Select all that apply",
+    "type": "multi-select",
+    "validation": { "required": true, "minSelections": 1 },
+    "options": [
+      {
+        "value": "lead-generation",
+        "label": "Lead Generation",
+        "description": "Drive qualified prospects to sales team, demo requests",
+        "icon": "🎯"
+      },
+      {
+        "value": "brand-awareness",
+        "label": "Brand Awareness",
+        "description": "Increase market visibility and follower growth",
+        "icon": "📢"
+      },
+      {
+        "value": "thought-leadership",
+        "label": "Thought Leadership",
+        "description": "Position as industry expert and innovation leader",
+        "icon": "🧠"
+      }
+    ]
+  },
+  {
+    "id": "audience",
+    "order": 2,
+    "question": "Who is your target audience?",
+    "subtitle": "Select all segments you want to reach",
+    "type": "multi-select",
+    "validation": { "required": true, "minSelections": 1 },
+    "options": [
+      {
+        "value": "decision-makers",
+        "label": "Decision Makers",
+        "description": "C-suite, Directors, VPs (budget holders)",
+        "icon": "👔"
+      },
+      {
+        "value": "technical",
+        "label": "Technical Evaluators",
+        "description": "IT, security, operations managers",
+        "icon": "🔧"
+      },
+      {
+        "value": "end-users",
+        "label": "End Users & Influencers",
+        "description": "Field personnel, practitioners",
+        "icon": "👥"
+      }
+    ]
+  },
+  {
+    "id": "frequency",
+    "order": 3,
+    "question": "What posting frequency works for your team?",
+    "subtitle": "Consider your content production capacity",
+    "type": "single-select",
+    "validation": { "required": true },
+    "options": [
+      {
+        "value": "conservative",
+        "label": "Conservative (3-4 posts/week)",
+        "description": "~12-16 posts/month - High quality, less frequent",
+        "recommended": true
+      },
+      {
+        "value": "moderate",
+        "label": "Moderate (5-7 posts/week)",
+        "description": "~20-28 posts/month - Balanced approach"
+      },
+      {
+        "value": "aggressive",
+        "label": "Aggressive (Daily)",
+        "description": "~30 posts/month - Maximum visibility"
+      }
+    ]
+  },
+  {
+    "id": "contentMix",
+    "order": 4,
+    "question": "What content format mix do you prefer?",
+    "subtitle": "Choose the primary content style",
+    "type": "single-select",
+    "validation": { "required": true },
+    "options": [
+      {
+        "value": "image-heavy",
+        "label": "Image-Heavy (60% images)",
+        "description": "Primarily visual posts with product shots, infographics",
+        "icon": "🖼️"
+      },
+      {
+        "value": "video-first",
+        "label": "Video-First (50% video)",
+        "description": "Prioritize video content for higher engagement",
+        "icon": "🎥"
+      },
+      {
+        "value": "balanced",
+        "label": "Balanced Mix",
+        "description": "Even split: 40% text, 35% images, 25% video",
+        "icon": "⚖️",
+        "recommended": true
+      },
+      {
+        "value": "thought-leadership",
+        "label": "Thought Leadership (Text-Focused)",
+        "description": "Articles, opinion pieces, industry insights",
+        "icon": "✍️"
+      }
+    ]
+  },
+  {
+    "id": "products",
+    "order": 5,
+    "question": "Which products or solutions will you feature?",
+    "subtitle": "Select all products you want to highlight",
+    "type": "multi-select",
+    "validation": { "required": true, "minSelections": 1 },
+    "options": [
+      {
+        "value": "body-worn-cameras",
+        "label": "Body Worn Cameras",
+        "description": "Evidence integrity, field operations",
+        "icon": "📹"
+      },
+      {
+        "value": "rugged-tablets",
+        "label": "Rugged Tablets",
+        "description": "Field computing, utility work",
+        "icon": "💻"
+      },
+      {
+        "value": "elevateX-series",
+        "label": "ElevateX Series (MCX Devices)",
+        "description": "PX350 Pro, MX1 Pro - LTE/5G/MCX capable",
+        "icon": "📡"
+      },
+      {
+        "value": "neuranet-nc",
+        "label": "NeuraNet NC Technology",
+        "description": "Neural Network Noise Cancellation",
+        "icon": "🧠"
+      }
+    ]
+  },
+  {
+    "id": "kpis",
+    "order": 6,
+    "question": "What success metrics matter most?",
+    "subtitle": "Select your primary KPIs",
+    "type": "multi-select",
+    "validation": { "required": true, "minSelections": 1 },
+    "options": [
+      {
+        "value": "engagement-rate",
+        "label": "Engagement Rate",
+        "description": "Likes, comments, shares per post",
+        "icon": "📊"
+      },
+      {
+        "value": "lead-count",
+        "label": "Lead Generation",
+        "description": "Qualified leads, demo requests",
+        "icon": "🎯"
+      },
+      {
+        "value": "website-traffic",
+        "label": "Website Traffic",
+        "description": "LinkedIn-sourced visitors",
+        "icon": "🌐"
+      },
+      {
+        "value": "follower-growth",
+        "label": "Follower Growth",
+        "description": "New LinkedIn followers per month",
+        "icon": "📈"
+      }
+    ]
+  }
+]
